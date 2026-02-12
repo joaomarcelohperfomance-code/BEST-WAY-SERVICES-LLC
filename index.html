@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Best Way Services | Residential and commercial cleaning</title>
+    <meta
+      name="description"
+      content="Residential and commercial cleaning with an identified team, a checklist, and on-time delivery. Fast quotes via WhatsApp."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,600&family=Manrope:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f9f5ff;
+        --ink: #1f0f2e;
+        --muted: #5b4b6a;
+        --brand: #6d28d9;
+        --brand-dark: #3b0764;
+        --accent: #d6a44c;
+        --blue: #3c6f9f;
+        --blue-soft: #eaf2ff;
+        --lilac: #e9d5ff;
+        --lavender: #f5edff;
+        --gold-soft: #ffefc2;
+        --card: #ffffff;
+        --line: #ead7ff;
+        --shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+        --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.1);
+        --shadow-strong: 0 30px 60px rgba(15, 23, 42, 0.18);
+        --radius: 22px;
+        --radius-sm: 14px;
+        --icon-check: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27black%27%20d%3D%27M9.2%2016.2L5.5%2012.5L4%2014l5.2%205.2L20%208.3L18.5%206.8z%27/%3E%3C/svg%3E");
+        --icon-spark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27black%27%20d%3D%27M12%202l2.4%205.3L20%209l-5.6%201.7L12%2016l-2.4-5.3L4%209l5.6-1.7z%27/%3E%3C/svg%3E");
+        --icon-star: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27black%27%20d%3D%27M12%202l2.9%206.1L22%209.3l-5%204.9L18.2%2022L12%2018.5L5.8%2022L7%2014.2L2%209.3l7.1-1.2z%27/%3E%3C/svg%3E");
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, #f7ecff 0%, #eaf2ff 28%, #fff1d6 58%, #f9f5ff 100%);
+        overflow-x: hidden;
+        min-height: 100vh;
+        line-height: 1.6;
+        font-size: 16px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+            circle at 92% 8%,
+            rgba(59, 7, 100, 0.14),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(109, 40, 217, 0.12),
+            transparent 40%
+          ),
+          radial-gradient(circle at 70% 35%, rgba(60, 111, 159, 0.12), transparent 48%),
+          radial-gradient(circle at 80% 20%, rgba(214, 164, 76, 0.14), transparent 45%),
+          radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.12), transparent 50%);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      main {
+        position: relative;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1140px, 100%);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        padding: 16px 0 8px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .header-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Space Grotesk", "Manrope", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--brand-dark);
+        letter-spacing: 0.5px;
+      }
+
+      .logo-img {
+        width: 219px;
+        height: 219px;
+        object-fit: contain;
+        flex: 0 0 auto;
+        filter: drop-shadow(0 10px 20px rgba(109, 40, 217, 0.25));
+      }
+
+      .header-bar .logo-img {
+        width: 280px;
+        height: 280px;
+        transform: scale(2.1);
+        transform-origin: center center;
+      }
+
+      footer .logo-img {
+        width: 558px;
+        height: 558px;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .site-nav a {
+        font-weight: 600;
+        color: var(--brand-dark);
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(109, 40, 217, 0.2);
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .site-nav a:hover {
+        background: rgba(109, 40, 217, 0.12);
+        border-color: rgba(109, 40, 217, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .site-nav a:focus-visible {
+        outline: 3px solid rgba(109, 40, 217, 0.35);
+        outline-offset: 2px;
+      }
+
+      section {
+        padding: clamp(56px, 7vw, 96px) 0;
+        position: relative;
+      }
+
+      .section-soft {
+        background: linear-gradient(
+          135deg,
+          rgba(233, 213, 255, 0.55) 0%,
+          rgba(234, 242, 255, 0.5) 45%,
+          rgba(255, 239, 194, 0.45) 100%
+        );
+      }
+
+      .section-contrast {
+        background: linear-gradient(135deg, #f5edff 0%, #ecf2ff 45%, #fff2df 100%);
+      }
+
+      .section-dark {
+        background: #2b0f46;
+        color: #fff;
+      }
+
+      .section-dark .section-subtitle {
+        color: #e9d5ff;
+      }
+
+      section.has-divider::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: min(1100px, 90%);
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(109, 40, 217, 0),
+          rgba(109, 40, 217, 0.35),
+          rgba(109, 40, 217, 0)
+        );
+        opacity: 0.7;
+      }
+
+      .section-hero {
+        padding: clamp(40px, 6vw, 88px) 0 clamp(60px, 8vw, 110px);
+        overflow: hidden;
+      }
+
+      .section-hero .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/hero-house.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.14;
+        filter: saturate(0.7) brightness(1.05) blur(0.8px);
+        mix-blend-mode: luminosity;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .section-hero::before {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(109, 40, 217, 0.28), transparent 70%);
+        top: -160px;
+        right: -120px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .section-hero::after {
+        content: "";
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(214, 164, 76, 0.28), transparent 70%);
+        bottom: -140px;
+        left: -120px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 32px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-media {
+        display: grid;
+        gap: 18px;
+      }
+
+      .hero-photo {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        background: #f3e8ff;
+        aspect-ratio: 4 / 3;
+      }
+
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 30%;
+        display: block;
+      }
+
+      .hero h1 {
+        font-family: "Space Grotesk", "Manrope", sans-serif;
+        font-size: clamp(2.1rem, 2.6vw + 1.2rem, 3.4rem);
+        margin: 0 0 16px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .accent-word {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 600;
+        display: inline-block;
+        color: var(--brand-dark);
+        animation: wordFloat 5s ease-in-out infinite;
+        white-space: nowrap;
+      }
+
+      .accent-word.alt {
+        animation-delay: 0.5s;
+      }
+
+      .hero p {
+        margin: 0 0 22px;
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 560px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .cta-row .btn {
+        width: 100%;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        border: 2px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        min-height: 48px;
+        letter-spacing: 0.2px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #5d2ecb, #3c6f9f, #d6a44c);
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(109, 40, 217, 0.25);
+      }
+
+      .btn-secondary {
+        background: rgba(60, 111, 159, 0.12);
+        border-color: rgba(60, 111, 159, 0.32);
+        color: var(--blue);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 30px rgba(109, 40, 217, 0.22);
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid rgba(109, 40, 217, 0.35);
+        outline-offset: 2px;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: var(--radius);
+        padding: 26px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(60, 111, 159, 0.18);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+      }
+
+      .hero-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero-list li {
+        background: linear-gradient(135deg, rgba(233, 213, 255, 0.65), rgba(234, 242, 255, 0.7));
+        border-radius: 14px;
+        padding: 12px 14px 12px 46px;
+        font-weight: 600;
+        font-size: 0.98rem;
+        position: relative;
+      }
+
+      .hero-list li::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        background: var(--blue);
+        -webkit-mask: var(--icon-check) center / contain no-repeat;
+        mask: var(--icon-check) center / contain no-repeat;
+      }
+
+      .section-title {
+        font-family: "Space Grotesk", "Manrope", sans-serif;
+        font-size: clamp(1.6rem, 1.6vw + 1rem, 2.4rem);
+        margin: 0 0 14px;
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        margin: 0 0 24px;
+        max-width: 720px;
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: clamp(16px, 2vw, 26px);
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 22px;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(109, 40, 217, 0.3);
+        box-shadow: var(--shadow);
+      }
+
+      .card h4 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .card h4::before {
+        content: "";
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.3), rgba(214, 164, 76, 0.3));
+        -webkit-mask: var(--icon-spark) center / 18px no-repeat;
+        mask: var(--icon-spark) center / 18px no-repeat;
+        flex: 0 0 auto;
+      }
+
+      /* Animated service icons */
+      .section-value {
+        --icon-size: clamp(50px, 6vw, 68px);
+      }
+
+      .section-value .card h4 {
+        align-items: center;
+        gap: 16px;
+        line-height: 1.2;
+      }
+
+      .section-value .card h4::before {
+        display: none;
+      }
+
+      .icon-animated {
+        width: var(--icon-size);
+        height: var(--icon-size);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        color: var(--brand);
+      }
+
+      .icon-animated svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+      }
+
+      .icon-animated .outline {
+        stroke: currentColor;
+        stroke-width: 2.6;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon-animated .solid {
+        fill: currentColor;
+        opacity: 0.18;
+        stroke: currentColor;
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon-animated .solid-strong {
+        fill: currentColor;
+        opacity: 0.35;
+        stroke: currentColor;
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon-lilac {
+        color: var(--brand);
+      }
+
+      .icon-blue {
+        color: #2563eb;
+      }
+
+      .icon-gold {
+        color: var(--accent);
+      }
+
+      .sponge-move {
+        animation: sponge-swipe 3s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .sponge-wipe {
+        animation: sponge-wipe 3s ease-in-out infinite;
+        stroke-dasharray: 36;
+        stroke-dashoffset: 36;
+        opacity: 0;
+      }
+
+      .vacuum-body {
+        animation: vacuum-bob 3.6s ease-in-out infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .vacuum-dust {
+        animation: vacuum-pull 3.6s ease-in-out infinite;
+        fill: currentColor;
+        opacity: 0;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .vacuum-dust.dust-2 {
+        animation-delay: 0.2s;
+      }
+
+      .vacuum-dust.dust-3 {
+        animation-delay: 0.4s;
+      }
+
+      .spray-press {
+        animation: spray-press 3.2s ease-in-out infinite;
+        transform-origin: left center;
+        transform-box: fill-box;
+      }
+
+      .spray-mist {
+        animation: spray-mist 3.2s ease-in-out infinite;
+        opacity: 0;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+
+      .spray-mist.mist-2 {
+        animation-delay: 0.2s;
+      }
+
+      .spray-mist.mist-3 {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes sponge-swipe {
+        0%,
+        18% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        45% {
+          transform: translate(6px, -4px) rotate(-6deg);
+        }
+        60% {
+          transform: translate(10px, -6px) rotate(-8deg);
+        }
+        75%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+
+      @keyframes sponge-wipe {
+        0%,
+        22% {
+          opacity: 0;
+          stroke-dashoffset: 36;
+        }
+        32% {
+          opacity: 0.65;
+        }
+        58% {
+          opacity: 0.65;
+          stroke-dashoffset: 0;
+        }
+        70%,
+        100% {
+          opacity: 0;
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes vacuum-bob {
+        0%,
+        18% {
+          transform: translate(0, 0);
+        }
+        38% {
+          transform: translate(2px, -1px);
+        }
+        58% {
+          transform: translate(-1px, 1px);
+        }
+        78%,
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes vacuum-pull {
+        0%,
+        20% {
+          opacity: 0;
+          transform: translateX(0) scale(1);
+        }
+        30% {
+          opacity: 0.6;
+        }
+        60%,
+        100% {
+          opacity: 0;
+          transform: translateX(-12px) scale(0.2);
+        }
+      }
+
+      @keyframes spray-press {
+        0%,
+        18% {
+          transform: translateY(0);
+        }
+        28% {
+          transform: translateY(1.5px);
+        }
+        40% {
+          transform: translateY(0);
+        }
+        55% {
+          transform: translateY(1.5px);
+        }
+        70%,
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes spray-mist {
+        0%,
+        20% {
+          opacity: 0;
+          transform: translateX(0) scale(0.9);
+        }
+        32% {
+          opacity: 0.7;
+        }
+        48% {
+          opacity: 0;
+          transform: translateX(8px) scale(1.1);
+        }
+        58% {
+          opacity: 0.7;
+          transform: translateX(0) scale(0.9);
+        }
+        70%,
+        100% {
+          opacity: 0;
+          transform: translateX(8px) scale(1.1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .sponge-move,
+        .sponge-wipe,
+        .vacuum-body,
+        .vacuum-dust,
+        .spray-press,
+        .spray-mist {
+          animation: none !important;
+          transform: none;
+        }
+
+        .sponge-wipe {
+          opacity: 0.5;
+          stroke-dashoffset: 0;
+        }
+
+        .vacuum-dust,
+        .spray-mist {
+          opacity: 0.5;
+        }
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .steps {
+        counter-reset: step;
+      }
+
+      .step-item {
+        position: relative;
+        padding-left: 58px;
+      }
+
+      .step-item::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      .section-steps .card h4::before {
+        display: none;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          rgba(109, 40, 217, 0.18),
+          rgba(60, 111, 159, 0.2),
+          rgba(214, 164, 76, 0.22)
+        );
+        color: var(--brand-dark);
+        font-weight: 700;
+        font-size: 0.9rem;
+        border: 1px solid rgba(109, 40, 217, 0.25);
+      }
+
+      .comparison {
+        --pos: 55%;
+        margin: 24px 0 32px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        background: #fff;
+        position: relative;
+      }
+
+      .comparison-track {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        min-height: 200px;
+      }
+
+      .comparison-before,
+      .comparison-after {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .comparison-before::before,
+      .comparison-after::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--brand-dark);
+        border: 1px solid rgba(109, 40, 217, 0.2);
+        pointer-events: none;
+      }
+
+      .comparison-before::before {
+        content: "After";
+        right: 14px;
+      }
+
+      .comparison-after::before {
+        content: "Before";
+        left: 14px;
+      }
+
+      .comparison-before {
+        background: linear-gradient(120deg, #e9d5ff, #eaf2ff);
+      }
+
+      .comparison-before::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          135deg,
+          rgba(166, 132, 209, 0.35) 0 6px,
+          rgba(166, 132, 209, 0.2) 6px 12px
+        );
+        opacity: 0.45;
+      }
+
+      .comparison-after {
+        background: linear-gradient(120deg, #fff1d6, #f5edff);
+        clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+      }
+
+      .comparison-after::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(60, 111, 159, 0.12), transparent 55%);
+      }
+
+      .comparison-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--pos) - 16px);
+        width: 32px;
+        background: rgba(255, 255, 255, 0.7);
+        border-left: 1px solid rgba(109, 40, 217, 0.3);
+        border-right: 1px solid rgba(109, 40, 217, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .comparison-handle::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid var(--brand);
+        background: #fff;
+        box-shadow: 0 8px 16px rgba(109, 40, 217, 0.25);
+      }
+
+      .comparison-range {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: ew-resize;
+      }
+
+      .comparison-before img,
+      .comparison-after img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .testimonials {
+        background: #2b0f46;
+        color: #fff;
+      }
+
+      .testimonials .grid {
+        display: flex;
+        gap: clamp(16px, 2vw, 26px);
+        overflow-x: auto;
+        overflow-y: visible;
+        padding-bottom: 10px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .testimonials .card {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+        flex: 0 0 clamp(260px, 80vw, 360px);
+        scroll-snap-align: start;
+      }
+
+      .testimonials .card::before {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 14px;
+        margin-bottom: 14px;
+        background: #d6a44c;
+        -webkit-mask: var(--icon-star) left center / 16px repeat-x;
+        mask: var(--icon-star) left center / 16px repeat-x;
+      }
+
+      .testimonials .card p {
+        color: #f3e8ff;
+      }
+
+      .testimonials strong {
+        display: block;
+        margin-top: 14px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .form-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 28px;
+        box-shadow: var(--shadow-strong);
+        border: 1px solid var(--line);
+      }
+
+      form {
+        display: grid;
+        gap: 14px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid #e0d1ff;
+        font-family: inherit;
+        font-size: 1rem;
+        background: #fbf7ff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--brand);
+        box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.18);
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .form-note {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .cta-block {
+        text-align: center;
+        padding: 52px 20px;
+        background: linear-gradient(135deg, #f6e9ff, #fff6df);
+        border-radius: var(--radius);
+        border: 1px solid #ead7ff;
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-block .section-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      form .btn {
+        width: 100%;
+      }
+      .cta-block::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.14), transparent 55%);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .cta-block > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .photo-strip {
+        display: grid;
+        gap: clamp(14px, 2vw, 20px);
+        margin-top: clamp(24px, 3vw, 32px);
+      }
+
+      .photo-card {
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        background: #f3e8ff;
+        aspect-ratio: 4 / 3;
+      }
+
+      .photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .photo-strip .photo-card:first-child img {
+        object-position: 75% 20%;
+      }
+
+      .faq .card {
+        padding: 20px;
+      }
+
+      .faq strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      footer {
+        padding: 40px 0 120px;
+        color: #334155;
+        background: #f9f5ff;
+        border-top: 1px solid rgba(109, 40, 217, 0.2);
+      }
+
+      .footer-grid {
+        display: grid;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .footer-note {
+        font-size: 0.9rem;
+        color: #6b5c7a;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        display: flex;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        padding: 12px;
+        border-radius: 999px;
+        box-shadow: 0 18px 38px rgba(15, 23, 42, 0.2);
+        border: 1px solid var(--line);
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(12px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      .mobile-cta.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .mobile-cta a {
+        flex: 1;
+        font-size: 0.95rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        will-change: opacity, transform;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes wordFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+          letter-spacing: 0;
+        }
+        50% {
+          transform: translateY(-2px);
+          letter-spacing: 0.6px;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .cta-row {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .cta-row .btn {
+          width: auto;
+        }
+
+        .grid.two {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid.three {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr 1.2fr;
+        }
+
+        .footer-grid > div:nth-child(1) {
+          grid-column: 3;
+          grid-row: 1;
+          text-align: right;
+          justify-self: end;
+        }
+
+        .footer-grid > div:nth-child(1) .brand {
+          justify-content: flex-end;
+        }
+
+        .footer-grid > div:nth-child(2) {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .footer-grid > div:nth-child(3) {
+          grid-column: 2;
+          grid-row: 1;
+        }
+
+        .mobile-cta {
+          display: flex;
+        }
+
+        .comparison-track {
+          aspect-ratio: 21 / 9;
+        }
+
+        .photo-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 899px) {
+        body {
+          padding-bottom: 110px;
+        }
+        header {
+          padding: 12px 0 6px;
+        }
+        .section-hero .hero-bg {
+          opacity: 0.1;
+          background-position: center top;
+        }
+        .header-bar {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .brand {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .site-nav {
+          width: 100%;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding-bottom: 8px;
+          justify-content: center;
+        }
+
+        .card h4::before {
+          width: 28px;
+          height: 28px;
+        }
+
+        .logo-img {
+          width: 219px;
+          height: 219px;
+        }
+
+        .header-bar .logo-img {
+          width: 220px;
+          height: 220px;
+          transform: scale(2.1);
+          transform-origin: center center;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container header-bar">
+        <div class="brand">
+          <img class="logo-img" src="assets/logo.png" alt="" />
+        </div>
+        <nav class="site-nav" aria-label="Main sections">
+          <a href="#inicio">Home</a>
+          <a href="#servicos">Services</a>
+          <a href="#como-funciona">How it works</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-hero reveal has-divider is-visible" id="inicio">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div>
+            <span class="pill">Over 8 years cleaning homes and businesses</span>
+            <h1>
+              Complete <span class="accent-word">cleaning</span> for your home or business, without wasting
+              <span class="accent-word alt">time</span>
+            </h1>
+            <p>
+              You reach out, the team arrives on time and delivers everything clean in one visit.
+              Fast quotes via WhatsApp or the form.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://wa.me/12403885323">
+                Get a quote on WhatsApp
+              </a>
+              <a class="btn btn-secondary" href="#formulario">
+                Request a quote via the form
+              </a>
+            </div>
+            <p class="form-note">Reply within 5 minutes during business hours.</p>
+          </div>
+          <div class="hero-media">
+            <figure class="hero-photo">
+              <img src="assets/hero-cleaning.jpg" alt="" loading="eager" decoding="async" />
+            </figure>
+            <div class="hero-card">
+              <h3>Fast and safe service</h3>
+              <ul class="hero-list">
+                <li>Identified and trained team</li>
+                <li>Visible checklist from start to finish</li>
+                <li>Right products for each surface and environment</li>
+                <li>Final review before delivery</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pain reveal has-divider" id="problemas">
+        <div class="container">
+          <h2 class="section-title">If dirt takes up your time, we solve it</h2>
+          <p class="section-subtitle">
+            You want a clean place without losing the whole day. We arrive, clean, and deliver an organized, pleasant space. Our service is ideal if you:
+          </p>
+          <div class="grid two">
+            <div class="card">
+              <h4>Have a busy routine and visitors coming.</h4>
+              <p>Our team arrives and completes a full clean of every room in a single visit.</p>
+            </div>
+            <div class="card">
+              <h4>Your business needs a great environment</h4>
+              <p>A clean environment makes customers and staff feel more confident.</p>
+            </div>
+            <div class="card">
+              <h4>Need specialists in post-construction and deep cleaning</h4>
+              <p>We remove fine dust, construction residue, and built-up grime.</p>
+            </div>
+            <div class="card">
+              <h4>Worried about a poorly done job</h4>
+              <p>We follow a clear checklist and review everything at the end.</p>
+            </div>
+          </div>
+          <div class="photo-strip">
+            <figure class="photo-card">
+              <img src="assets/cleaning-residential.jpg" alt="" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/cleaning-commercial.jpg" alt="" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/cleaning-detail.jpg" alt="" loading="lazy" decoding="async" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-value section-soft reveal has-divider" id="valor">
+        <div class="container">
+          <h2 class="section-title">Cleaning done the right way, from start to finish</h2>
+          <p class="section-subtitle">
+           Each step has a clear goal: remove hidden dirt, organize your space, and deliver a place that feels good to live and be in.
+          </p>
+          <div class="grid three">
+            <div class="card">
+              <h4>
+                <span class="icon-animated icon-lilac" aria-hidden="true">
+                  <svg
+                    class="animated-icon animated-sponge-icon"
+                    viewBox="0 0 64 64"
+                    data-icon="AnimatedSpongeIcon"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <g class="sponge-move">
+                      <rect x="16" y="30" width="30" height="16" rx="5" class="solid" />
+                      <rect x="20" y="24" width="22" height="9" rx="4" class="solid-strong" />
+                    </g>
+                    <path class="sponge-wipe outline" d="M34 20c9 0 15 4 19 9" />
+                  </svg>
+                </span>
+                Simple, visible checklist
+              </h4>
+              <p>You know exactly what will be done before we start.</p>
+            </div>
+            <div class="card">
+              <h4>
+                <span class="icon-animated icon-blue" aria-hidden="true">
+                  <svg
+                    class="animated-icon animated-vacuum-icon"
+                    viewBox="0 0 64 64"
+                    data-icon="AnimatedVacuumIcon"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <g class="vacuum-body">
+                      <rect x="14" y="30" width="18" height="18" rx="5" class="solid" />
+                      <path class="outline" d="M18 30v-5c0-4 5-6 9-4" />
+                      <path class="solid" d="M32 36h12l8-4v12l-8-4H32z" />
+                    </g>
+                    <circle class="vacuum-dust dust-1" cx="56" cy="30" r="2" />
+                    <circle class="vacuum-dust dust-2" cx="58" cy="36" r="2" />
+                    <circle class="vacuum-dust dust-3" cx="55" cy="42" r="2" />
+                  </svg>
+                </span>
+                Careful team
+              </h4>
+              <p>We protect floors, move items carefully, and put everything back in place.</p>
+            </div>
+            <div class="card">
+              <h4>
+                <span class="icon-animated icon-gold" aria-hidden="true">
+                  <svg
+                    class="animated-icon animated-spray-icon"
+                    viewBox="0 0 64 64"
+                    data-icon="AnimatedSprayIcon"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect x="22" y="26" width="20" height="24" rx="6" class="solid" />
+                    <rect x="26" y="18" width="12" height="6" rx="3" class="solid-strong" />
+                    <g class="spray-press">
+                      <rect x="36" y="18" width="10" height="6" rx="2" class="solid-strong" />
+                      <line x1="46" y1="21" x2="54" y2="21" class="outline" />
+                    </g>
+                    <line class="spray-mist mist-1 outline" x1="50" y1="22" x2="58" y2="18" />
+                    <line class="spray-mist mist-2 outline" x1="50" y1="26" x2="60" y2="26" />
+                    <line class="spray-mist mist-3 outline" x1="50" y1="30" x2="58" y2="34" />
+                  </svg>
+                </span>
+                Results that last
+              </h4>
+              <p>Deep cleaning to keep the space clean longer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-services reveal has-divider" id="servicos">
+        <div class="container">
+          <h2 class="section-title">Services that deliver real results</h2>
+          <p class="section-subtitle">
+            Choose what you need and get a straightforward quote, no runaround.
+          </p>
+          <div class="comparison" aria-hidden="true">
+            <div class="comparison-track">
+              <div class="comparison-before">
+                <img src="assets/before-cleaning.jpg" alt="" loading="lazy" decoding="async" />
+              </div>
+              <div class="comparison-after">
+                <img src="assets/after-cleaning.jpg" alt="" loading="lazy" decoding="async" />
+              </div>
+              <div class="comparison-handle"></div>
+            </div>
+            <input class="comparison-range" type="range" min="0" max="100" value="55" tabindex="-1" />
+          </div>
+          <div class="grid three">
+            <div class="card">
+              <h4>Complete residential cleaning</h4>
+              <p>Home ready the same day, organized and with a fresh scent that brings peace.</p>
+            </div>
+            <div class="card">
+              <h4>Commercial cleaning</h4>
+              <p>Clean, organized environment for customers and staff.</p>
+            </div>
+            <div class="card">
+              <h4>Post-construction</h4>
+              <p>No fine dust, no debris, and no construction stains.</p>
+            </div>
+            <div class="card">
+              <h4>Deep cleaning</h4>
+              <p>Grease and mold removed safely.</p>
+            </div>
+            <div class="card">
+              <h4>Windows and storefronts</h4>
+              <p>More light, more cleanliness, and a great impression.</p>
+            </div>
+            <div class="card">
+              <h4>Regular maintenance</h4>
+              <p>Regular schedule to prevent dirt buildup.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-steps section-contrast reveal has-divider" id="como-funciona">
+        <div class="container">
+          <h2 class="section-title">How it works</h2>
+          <p class="section-subtitle">Simple and direct, no complications.</p>
+          <div class="grid three steps">
+            <div class="card step-item">
+              <h4>You contact us</h4>
+              <p>Send photos and details via WhatsApp or the form.</p>
+            </div>
+            <div class="card step-item">
+              <h4>Get the quote</h4>
+              <p>Fast quote with available time slots.</p>
+            </div>
+            <div class="card step-item">
+              <h4>Your space cleaned and delivered</h4>
+              <p>Review and handoff of the space, organized and clean.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials section-dark reveal has-divider" id="depoimentos">
+        <div class="container">
+          <h2 class="section-title">Real clients, real results</h2>
+          <p class="section-subtitle">
+            Testimonials from people who wanted it solved quickly and were satisfied.
+          </p>
+          <div class="grid three">
+            <div class="card">
+              <p>
+                "Best Way Services LLC is, by far, the best cleaning company in the DMV area,
+                Maryland. I hired them for a complete residential cleaning and the results
+                exceeded my expectations. The team was punctual, reliable, friendly, and
+                extremely attentive to detail. My house was spotless and smelled wonderful.
+                If you are looking for a professional residential cleaning service in Maryland,
+                this is the right company. I will definitely hire them again! I highly recommend them!"
+              </p>
+              <strong>Henry Tiago</strong>
+            </div>
+            <div class="card">
+              <p>
+                "The team was incredibly detail-oriented and thoughtful while cleaning our home.
+                We were taking care of a sick child when they deep cleaned our house, and they
+                were very respectful of our situation! We are excited to begin biweekly cleans
+                and cannot wait to keep enjoying our clean home!"
+              </p>
+              <strong>Madeleine Foster (Local Guide)</strong>
+            </div>
+            <div class="card">
+              <p>
+                "Cynthia and her husband do an AMAZING job!! They are so nice and professional as
+                people, and our house feels so brand-new. And we are continuing to find even the
+                tiniest details that they did while they were here. They provide such a relief and
+                do a great job. 1000/10 recommend, they rock."
+              </p>
+              <strong>Jack Crockett</strong>
+            </div>
+            <div class="card">
+              <p>
+                "I've used Best Way Services for my studio, then one bedroom, then house. First,
+                Cynthia and her husband are not only professional, but they are kind. They are
+                punctual and do a thorough and detail oriented cleaning that is well worth the price.
+                They came highly recommended for good reason and I'm sharing my 5 star recommendation here."
+              </p>
+              <strong>Charmaine Finch - NOAA Federal</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-trust reveal has-divider" id="confianca">
+        <div class="container">
+          <h2 class="section-title">Trust and guarantee</h2>
+          <p class="section-subtitle">
+            Safe service, with a clear process and no surprises.
+          </p>
+          <div class="grid two">
+            <div class="card">
+              <h4>Identified and trained team</h4>
+              <p>Only trusted professionals with experience.</p>
+            </div>
+            <div class="card">
+              <h4>Proper products</h4>
+              <p>We use the right product for each type of surface and environment.</p>
+            </div>
+            <div class="card">
+              <h4>Mandatory final review</h4>
+              <p>We check everything before releasing the space.</p>
+            </div>
+            <div class="card">
+              <h4>Satisfaction guarantee</h4>
+              <p>If anything isn't as agreed, we return at no extra cost.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-offer section-soft reveal has-divider" id="orcamento">
+        <div class="container">
+          <div class="grid two">
+            <div>
+              <h2 class="section-title">Fast quote, no commitment</h2>
+              <p class="section-subtitle">
+                Open schedule this week. Limited time slots.
+              </p>
+              <div class="grid">
+                <div class="card">
+                  <h4>Quick response</h4>
+                  <p>Get the price and time in a few minutes.</p>
+                </div>
+                <div class="card">
+                  <h4>Easy payment</h4>
+                  <p>Zelle, card, or transfer.</p>
+                </div>
+              </div>
+              <div class="cta-row" style="margin-top: 20px;">
+                <a class="btn btn-primary" href="https://wa.me/12403885323">
+                  Talk to us now
+                </a>
+                <a class="btn btn-secondary" href="#formulario">Request via the form</a>
+              </div>
+            </div>
+            <div class="form-card" id="formulario">
+              <h3 class="section-title">Get your quote in 2 minutes</h3>
+              <p class="section-subtitle">We get back on WhatsApp with the price and time.</p>
+              <form name="orcamento" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="orcamento" />
+                <p class="hidden" aria-hidden="true">
+                  <label>Do not fill <input name="bot-field" /></label>
+                </p>
+                <div>
+                  <label for="nome">Name</label>
+                  <input id="nome" name="nome" type="text" required />
+                </div>
+                <div>
+                  <label for="whats">WhatsApp or phone number (if you don't have WhatsApp)</label>
+                  <input id="whats" name="whats" type="tel" placeholder="(000) 0000-000" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+                <div>
+                  <label for="tipo">Type of cleaning</label>
+                  <select id="tipo" name="tipo" required>
+                    <option value="">Select</option>
+                    <option>Residential</option>
+                    <option>Commercial</option>
+                    <option>Post-construction</option>
+                    <option>Deep cleaning</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="tamanho">Approximate size</label>
+                  <input id="tamanho" name="tamanho" type="text" placeholder="e.g., 80 m2 or 3 rooms" />
+                </div>
+                <div>
+                  <label for="local">Neighborhood and city</label>
+                  <input id="local" name="local" type="text" />
+                </div>
+                <div>
+                  <label for="data">Desired date</label>
+                  <input id="data" name="data" type="text" placeholder="e.g., Today or [Specify date]" />
+                </div>
+                <div>
+                  <label for="obs">Notes</label>
+                  <textarea id="obs" name="obs" placeholder="e.g., lots of grease in the kitchen"></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Send and receive a quote</button>
+                <p class="form-note">
+                  Prefer an immediate response? <a href="https://wa.me/12403885323">Click "talk to us"</a>.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-cta section-contrast reveal has-divider" id="cta">
+        <div class="container">
+          <div class="cta-block">
+            <h2 class="section-title">Ready to see everything clean today?</h2>
+            <p class="section-subtitle">
+              Click and get a clear, fast quote. No commitment.
+            </p>
+            <a class="btn btn-primary" href="https://wa.me/12403885323">
+              Get a quote now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq section-faq reveal" id="faq">
+        <div class="container">
+          <h2 class="section-title">Frequently asked questions</h2>
+          <p class="section-subtitle">Quick answers to help you decide.</p>
+          <div class="grid two">
+            <div class="card">
+              <strong>What's the price?</strong>
+              <p>It depends on the size and type of cleaning. Send the details and get the quote right away.</p>
+            </div>
+            <div class="card">
+              <strong>Do you bring the products?</strong>
+              <p>Yes. We bring the right products for each surface and environment.</p>
+            </div>
+            <div class="card">
+              <strong>Do you offer same-day service?</strong>
+              <p>Yes, when there is availability. Talk to our team for details.</p>
+            </div>
+            <div class="card">
+              <strong>What if I'm not satisfied?</strong>
+              <p>We return and fix what was not as agreed.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <div class="brand">
+            <img class="logo-img" src="assets/logo.png" alt="" />
+            
+          </div>
+          <p class="footer-note">
+           Best Way Services LLC is a professional cleaning company serving homes and businesses in the DMV area. Founded by a dedicated family, we combine reliability, efficiency, and attention to detail in all of our services. Our team provides high-quality cleaning with care, consistency, and professionalism. We don't just clean; we create healthy, organized, and welcoming spaces you can trust.
+          </p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p class="footer-note">WhatsApp: +1 (240) 388-5323</p>
+          <p class="footer-note">Phone: +1 (240) 388-5323</p>
+          <p class="footer-note"></p>
+        </div>
+        <div>
+          <strong>About Us</strong>
+          <p class="footer-note">Service hours: Mon to Fri, 8am to 6pm</p>
+          <p class="footer-note"></p>
+          <p class="footer-note">Email: contato@bestwayservices.com</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="mobile-cta" aria-label="Quick contact shortcut">
+      <a class="btn btn-primary" href="https://wa.me/12403885323">Talk to us now</a>
+      <a class="btn btn-secondary" href="#formulario">Form</a>
+    </div>
+    <script>
+      const comparison = document.querySelector(".comparison");
+      const range = document.querySelector(".comparison-range");
+      if (comparison && range) {
+        const setPos = () => {
+          comparison.style.setProperty("--pos", range.value + "%");
+        };
+        const setFromClientX = (clientX) => {
+          const rect = comparison.getBoundingClientRect();
+          if (!rect.width) {
+            return;
+          }
+          const raw = ((clientX - rect.left) / rect.width) * 100;
+          const clamped = Math.min(100, Math.max(0, raw));
+          range.value = clamped.toFixed(2);
+          setPos();
+        };
+        range.addEventListener("input", setPos);
+        comparison.addEventListener("click", (event) => {
+          setFromClientX(event.clientX);
+        });
+        if ("PointerEvent" in window) {
+          let isDragging = false;
+          comparison.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "mouse" && event.button !== 0) {
+              return;
+            }
+            isDragging = true;
+            setFromClientX(event.clientX);
+          });
+          comparison.addEventListener("pointermove", (event) => {
+            if (!isDragging) {
+              return;
+            }
+            setFromClientX(event.clientX);
+          });
+          comparison.addEventListener("pointerup", () => {
+            isDragging = false;
+          });
+          comparison.addEventListener("pointercancel", () => {
+            isDragging = false;
+          });
+        } else {
+          const handleTouch = (event) => {
+            const touch = event.touches && event.touches[0];
+            if (!touch) {
+              return;
+            }
+            setFromClientX(touch.clientX);
+          };
+          comparison.addEventListener("touchstart", handleTouch, { passive: true });
+          comparison.addEventListener("touchmove", handleTouch, { passive: true });
+        }
+        setPos();
+      }
+
+      const revealItems = document.querySelectorAll(".reveal");
+      if (revealItems.length) {
+        if (!("IntersectionObserver" in window)) {
+          revealItems.forEach((item) => item.classList.add("is-visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.18, rootMargin: "0px 0px -10% 0px" }
+          );
+          revealItems.forEach((item) => observer.observe(item));
+        }
+      }
+
+      const mobileCta = document.querySelector(".mobile-cta");
+      const heroSection = document.querySelector(".section-hero");
+      if (mobileCta && heroSection) {
+        const setCtaVisibility = (isVisible) => {
+          mobileCta.classList.toggle("is-visible", isVisible);
+        };
+
+        if ("IntersectionObserver" in window) {
+          const ctaObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                setCtaVisibility(!entry.isIntersecting);
+              });
+            },
+            { threshold: 0 }
+          );
+          ctaObserver.observe(heroSection);
+        } else {
+          const updateCta = () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            setCtaVisibility(heroBottom <= 0);
+          };
+          updateCta();
+          window.addEventListener("scroll", updateCta, { passive: true });
+          window.addEventListener("resize", updateCta);
+        }
+      }
+    </script>
+  </body>
+</html>

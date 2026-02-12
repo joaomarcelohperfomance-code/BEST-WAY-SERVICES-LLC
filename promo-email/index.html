@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Promo Email | Best Way Services</title>
+    <meta
+      name="description"
+      content="Sign up with your email to receive a 10% OFF coupon and exclusive promotions from Best Way Services."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,600&family=Manrope:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f9f5ff;
+        --ink: #1f0f2e;
+        --muted: #5b4b6a;
+        --brand: #6d28d9;
+        --brand-dark: #3b0764;
+        --accent: #d6a44c;
+        --blue: #3c6f9f;
+        --line: #ead7ff;
+        --card: rgba(255, 255, 255, 0.78);
+        --radius: 22px;
+        --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.1);
+        --shadow-strong: 0 30px 60px rgba(15, 23, 42, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: "Manrope", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, #f7ecff 0%, #eaf2ff 28%, #fff1d6 58%, #f9f5ff 100%);
+        line-height: 1.6;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(circle at 92% 8%, rgba(59, 7, 100, 0.14), transparent 45%),
+          radial-gradient(circle at 20% 10%, rgba(109, 40, 217, 0.12), transparent 40%),
+          radial-gradient(circle at 70% 35%, rgba(60, 111, 159, 0.12), transparent 48%),
+          radial-gradient(circle at 80% 20%, rgba(214, 164, 76, 0.14), transparent 45%);
+        z-index: -2;
+        pointer-events: none;
+      }
+
+      .promo-page {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 28px 18px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ambient {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(18px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .ambient.a {
+        width: 220px;
+        height: 220px;
+        top: 8%;
+        left: -60px;
+        background: rgba(109, 40, 217, 0.25);
+      }
+
+      .ambient.b {
+        width: 260px;
+        height: 260px;
+        bottom: -40px;
+        right: -40px;
+        background: rgba(214, 164, 76, 0.2);
+      }
+
+      .promo-shell {
+        width: min(560px, 100%);
+      }
+
+      .brand-lockup {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .logo-img {
+        width: min(210px, 60vw);
+        margin: 0 auto;
+        filter: drop-shadow(0 10px 20px rgba(109, 40, 217, 0.25));
+      }
+
+      .brand-note {
+        margin: 6px 0 0;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .promo-card {
+        --rotate-x: 0deg;
+        --rotate-y: 0deg;
+        --pointer-x: 50%;
+        --pointer-y: 50%;
+        position: relative;
+        border-radius: var(--radius);
+        transform-style: preserve-3d;
+        transform: perspective(1100px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .promo-card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: linear-gradient(
+          130deg,
+          rgba(109, 40, 217, 0.9),
+          rgba(60, 111, 159, 0.82),
+          rgba(214, 164, 76, 0.9),
+          rgba(109, 40, 217, 0.9)
+        );
+        background-size: 220% 220%;
+        animation: borderGlow 8s linear infinite;
+        filter: blur(20px);
+        z-index: -2;
+        opacity: 0.55;
+      }
+
+      .promo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(
+          circle at var(--pointer-x) var(--pointer-y),
+          rgba(255, 255, 255, 0.58),
+          transparent 50%
+        );
+        opacity: 0.65;
+        pointer-events: none;
+      }
+
+      .promo-card.is-interactive:hover {
+        box-shadow: 0 36px 66px rgba(15, 23, 42, 0.26);
+      }
+
+      .promo-card-content {
+        position: relative;
+        z-index: 1;
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        border-radius: inherit;
+        box-shadow: var(--shadow-strong);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        overflow: hidden;
+      }
+
+      .promo-card-content::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.48),
+          rgba(255, 255, 255, 0.16) 40%,
+          rgba(109, 40, 217, 0.07)
+        );
+      }
+
+      .promo-state {
+        position: relative;
+        padding: 28px 22px;
+        transform: translateZ(30px);
+      }
+
+      .promo-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+        font-size: 0.79rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--brand-dark);
+        background: rgba(233, 213, 255, 0.8);
+        border: 1px solid rgba(109, 40, 217, 0.25);
+      }
+
+      .promo-pill::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 14px rgba(214, 164, 76, 0.75);
+      }
+
+      h1 {
+        font-family: "Space Grotesk", "Manrope", sans-serif;
+        margin: 0 0 8px;
+        font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+        line-height: 1.2;
+        color: var(--brand-dark);
+      }
+
+      .promo-subtitle {
+        margin: 0 0 18px;
+        font-size: 1rem;
+        color: var(--muted);
+      }
+
+      form {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid #e0d1ff;
+        font-family: inherit;
+        font-size: 1rem;
+        background: #fbf7ff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--brand);
+        box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.18);
+        background: #fff;
+      }
+
+      .honeypot {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        border: 0;
+        border-radius: 12px;
+        padding: 13px 16px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(120deg, var(--brand), var(--brand-dark));
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 36px rgba(59, 7, 100, 0.26);
+        filter: saturate(1.06);
+      }
+
+      .btn:disabled {
+        cursor: wait;
+        opacity: 0.85;
+        transform: none;
+      }
+
+      .form-note {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .error-text {
+        margin: -4px 0 0;
+        min-height: 1.25rem;
+        color: #b91c1c;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .success-state h2 {
+        margin: 0 0 8px;
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.9rem, 5vw, 2.3rem);
+        color: var(--brand-dark);
+      }
+
+      .success-state p {
+        margin: 0 0 8px;
+        color: var(--muted);
+      }
+
+      .coupon {
+        margin: 10px 0 14px;
+        display: inline-block;
+        font-size: 1.12rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--brand-dark);
+        border-radius: 999px;
+        border: 1px solid rgba(109, 40, 217, 0.28);
+        background: rgba(233, 213, 255, 0.72);
+        padding: 8px 14px;
+      }
+
+      .success-state {
+        animation: fadeUp 0.3s ease;
+      }
+
+      .promo-card.is-success {
+        box-shadow: 0 34px 68px rgba(59, 7, 100, 0.22);
+      }
+
+      .promo-card.is-success::before {
+        opacity: 0.45;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 720px) {
+        .promo-page {
+          padding-top: 36px;
+        }
+
+        .promo-state {
+          padding: 36px 34px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="promo-page">
+      <span class="ambient a" aria-hidden="true"></span>
+      <span class="ambient b" aria-hidden="true"></span>
+      <section class="promo-shell" aria-label="Promotional signup">
+        <div class="brand-lockup">
+          <img class="logo-img" src="../assets/logo.png" alt="Best Way Services" />
+          <p class="brand-note">Private offer for promotional campaigns</p>
+        </div>
+        <article class="promo-card" id="promoCard">
+          <div class="promo-card-content">
+            <div class="promo-state" id="promoStateForm">
+              <span class="promo-pill">VIP OFFER</span>
+              <h1>Get 10% OFF on your next cleaning</h1>
+              <p class="promo-subtitle">
+                Enter your email to receive your coupon + exclusive promotions and alerts.
+              </p>
+              <form id="promoForm" novalidate>
+                <div class="honeypot" aria-hidden="true">
+                  <label for="company">Company</label>
+                  <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+                <div>
+                  <label for="promoEmail">Your best email</label>
+                  <input
+                    id="promoEmail"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <p class="error-text" id="formError" aria-live="polite"></p>
+                <button class="btn" id="promoSubmit" type="submit">I want my discount</button>
+                <p class="form-note">No spam. You can unsubscribe anytime.</p>
+              </form>
+            </div>
+            <div class="promo-state success-state" id="promoStateSuccess" hidden>
+              <span class="promo-pill">DISCOUNT UNLOCKED</span>
+              <h2>Congratulations! 🎉</h2>
+              <p>You got 10% OFF on your next cleaning.</p>
+              <p class="coupon">Coupon: BEST10</p>
+              <p>We sent the instructions to your email.</p>
+              <p>Refer a friend and unlock extra benefits.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const promoCard = document.getElementById("promoCard");
+        const promoForm = document.getElementById("promoForm");
+        const formState = document.getElementById("promoStateForm");
+        const successState = document.getElementById("promoStateSuccess");
+        const emailInput = document.getElementById("promoEmail");
+        const companyInput = document.getElementById("company");
+        const errorEl = document.getElementById("formError");
+        const submitButton = document.getElementById("promoSubmit");
+        const defaultButtonLabel = submitButton.textContent;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+        function setSubmitting(isSubmitting) {
+          submitButton.disabled = isSubmitting;
+          submitButton.textContent = isSubmitting ? "Sending..." : defaultButtonLabel;
+          promoForm.setAttribute("aria-busy", String(isSubmitting));
+        }
+
+        function setError(message) {
+          errorEl.textContent = message || "";
+        }
+
+        function showSuccess() {
+          promoForm.reset();
+          setError("");
+          formState.hidden = true;
+          successState.hidden = false;
+          promoCard.classList.add("is-success");
+        }
+
+        promoForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          setError("");
+
+          const email = emailInput.value.trim();
+          const company = companyInput.value.trim();
+
+          if (company) {
+            return;
+          }
+
+          if (!emailPattern.test(email)) {
+            setError("Enter a valid email to receive your discount.");
+            return;
+          }
+
+          setSubmitting(true);
+
+          const payload = {
+            email: email,
+            source: "promo-email",
+            createdAt: new Date().toISOString(),
+            pagePath: window.location.pathname,
+            userAgent: navigator.userAgent,
+            company: company,
+          };
+
+          try {
+            const response = await fetch("/api/promo-lead", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            let result = {};
+            try {
+              result = await response.json();
+            } catch (jsonError) {
+              result = {};
+            }
+
+            if (!response.ok || !result.ok) {
+              throw new Error(
+                result.error || "Unable to submit right now. Please try again in a moment."
+              );
+            }
+
+            showSuccess();
+          } catch (error) {
+            setError(
+              error instanceof Error
+                ? error.message
+                : "Unable to submit right now. Please try again in a moment."
+            );
+          } finally {
+            setSubmitting(false);
+          }
+        });
+
+        const canTilt =
+          window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (canTilt) {
+          promoCard.classList.add("is-interactive");
+
+          const resetTilt = function () {
+            promoCard.style.setProperty("--rotate-x", "0deg");
+            promoCard.style.setProperty("--rotate-y", "0deg");
+            promoCard.style.setProperty("--pointer-x", "50%");
+            promoCard.style.setProperty("--pointer-y", "50%");
+          };
+
+          promoCard.addEventListener("pointermove", function (event) {
+            const rect = promoCard.getBoundingClientRect();
+            if (!rect.width || !rect.height) {
+              return;
+            }
+
+            const relativeX = (event.clientX - rect.left) / rect.width;
+            const relativeY = (event.clientY - rect.top) / rect.height;
+            const clampedX = Math.min(1, Math.max(0, relativeX));
+            const clampedY = Math.min(1, Math.max(0, relativeY));
+            const rotateY = (clampedX - 0.5) * 10;
+            const rotateX = (0.5 - clampedY) * 10;
+
+            promoCard.style.setProperty("--rotate-x", rotateX.toFixed(2) + "deg");
+            promoCard.style.setProperty("--rotate-y", rotateY.toFixed(2) + "deg");
+            promoCard.style.setProperty("--pointer-x", (clampedX * 100).toFixed(2) + "%");
+            promoCard.style.setProperty("--pointer-y", (clampedY * 100).toFixed(2) + "%");
+          });
+
+          promoCard.addEventListener("pointerleave", resetTilt);
+        }
+      })();
+    </script>
+  </body>
+</html>
