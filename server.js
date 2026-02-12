@@ -143,6 +143,7 @@ async function handlePromoLead(req, res) {
     return;
   }
 
+  const name = typeof parsed.name === "string" ? parsed.name.trim() : "";
   const email = typeof parsed.email === "string" ? parsed.email.trim() : "";
   const source = typeof parsed.source === "string" ? parsed.source.trim() : "promo-email";
   const createdAtClient =
@@ -159,12 +160,18 @@ async function handlePromoLead(req, res) {
     return;
   }
 
+  if (name.length < 2) {
+    sendJson(res, 400, { ok: false, error: "Please send your name." });
+    return;
+  }
+
   if (!emailRegex.test(email)) {
     sendJson(res, 400, { ok: false, error: "Please send a valid email address." });
     return;
   }
 
   const lead = {
+    name,
     email: email.toLowerCase(),
     source: source || "promo-email",
     createdAt: new Date().toISOString(),

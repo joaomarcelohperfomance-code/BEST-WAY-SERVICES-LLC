@@ -26,7 +26,7 @@ Invoke-RestMethod `
   -Method Post `
   -Uri "http://127.0.0.1:4173/api/promo-lead" `
   -ContentType "application/json" `
-  -Body '{"email":"cliente@exemplo.com","source":"promo-email","createdAt":"2026-02-12T12:00:00.000Z","pagePath":"/promo-email/","userAgent":"manual-test","company":""}'
+  -Body '{"name":"John Smith","email":"cliente@exemplo.com","source":"promo-email","createdAt":"2026-02-12T12:00:00.000Z","pagePath":"/promo-email/","userAgent":"manual-test","company":""}'
 ```
 
 Expected response:

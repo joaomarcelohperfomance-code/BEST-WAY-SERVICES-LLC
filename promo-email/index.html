@@ -421,6 +421,17 @@
                   <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
                 </div>
                 <div>
+                  <label for="promoName">Your name</label>
+                  <input
+                    id="promoName"
+                    name="name"
+                    type="text"
+                    placeholder="e.g., John Smith"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div>
                   <label for="promoEmail">Your best email</label>
                   <input
                     id="promoEmail"
@@ -454,6 +465,7 @@
         const promoForm = document.getElementById("promoForm");
         const formState = document.getElementById("promoStateForm");
         const successState = document.getElementById("promoStateSuccess");
+        const nameInput = document.getElementById("promoName");
         const emailInput = document.getElementById("promoEmail");
         const companyInput = document.getElementById("company");
         const errorEl = document.getElementById("formError");
@@ -483,10 +495,16 @@
           event.preventDefault();
           setError("");
 
+          const name = nameInput.value.trim();
           const email = emailInput.value.trim();
           const company = companyInput.value.trim();
 
           if (company) {
+            return;
+          }
+
+          if (name.length < 2) {
+            setError("Enter your name to continue.");
             return;
           }
 
@@ -498,6 +516,7 @@
           setSubmitting(true);
 
           const payload = {
+            name: name,
             email: email,
             source: "promo-email",
             createdAt: new Date().toISOString(),

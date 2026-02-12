@@ -63,6 +63,7 @@ exports.handler = async function handler(event) {
     return json(400, { ok: false, error: "Invalid request body." });
   }
 
+  const name = typeof parsed.name === "string" ? parsed.name.trim() : "";
   const email = typeof parsed.email === "string" ? parsed.email.trim() : "";
   const source = typeof parsed.source === "string" ? parsed.source.trim() : "promo-email";
   const createdAtClient =
@@ -78,11 +79,16 @@ exports.handler = async function handler(event) {
     return json(200, { ok: true });
   }
 
+  if (name.length < 2) {
+    return json(400, { ok: false, error: "Please send your name." });
+  }
+
   if (!emailRegex.test(email)) {
     return json(400, { ok: false, error: "Please send a valid email address." });
   }
 
   const lead = {
+    name,
     email: email.toLowerCase(),
     source: source || "promo-email",
     createdAt: new Date().toISOString(),
