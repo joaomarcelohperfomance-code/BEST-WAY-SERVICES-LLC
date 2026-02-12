@@ -35,9 +35,34 @@ Expected response:
 {"ok":true,"coupon":"BEST10"}
 ```
 
-### CRM keys integration (TODO hooks)
-Replace the placeholder log in `server.js` inside `handlePromoLead`:
-- `HUBSPOT_API_KEY`
+### HubSpot integration (implemented)
+The endpoint now syncs `name + email` to HubSpot Contacts using:
+- `HUBSPOT_ACCESS_TOKEN` (required to enable sync)
+- `HUBSPOT_API_BASE` (optional, defaults to `https://api.hubapi.com`)
+
+If `HUBSPOT_ACCESS_TOKEN` is not set, the API still returns `200` and logs the lead server-side.
+If HubSpot is configured but fails, the endpoint returns `502`.
+
+Required HubSpot token scope:
+- `crm.objects.contacts.write`
+
+Where to set env var in Netlify:
+1. `Site configuration` -> `Environment variables`
+2. Add `HUBSPOT_ACCESS_TOKEN=<your_private_app_token>`
+3. Trigger a new deploy
+
+Local test with HubSpot enabled (PowerShell):
+
+```powershell
+$env:HUBSPOT_ACCESS_TOKEN="pat-xxxx"
+node server.js
+```
+
+The integration will:
+1. Try to update contact by email (`PATCH .../contacts/{email}?idProperty=email`)
+2. If not found (`404`), create contact (`POST .../contacts`)
+
+### Other CRM TODO hooks
 - `MAILCHIMP_API_KEY`
 - `AIRTABLE_API_KEY`
 - `AIRTABLE_BASE_ID`

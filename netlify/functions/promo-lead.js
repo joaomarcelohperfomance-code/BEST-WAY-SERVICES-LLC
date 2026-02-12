@@ -3,6 +3,11 @@ const RATE_WINDOW_MS = 15 * 60 * 1000;
 const RATE_MAX_REQUESTS = 5;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 const requestBuckets = new Map();
+const HUBSPOT_API_BASE = (process.env.HUBSPOT_API_BASE || "https://api.hubapi.com").replace(
+  /\/+$/,
+  ""
+);
+const HUBSPOT_ACCESS_TOKEN = (process.env.HUBSPOT_ACCESS_TOKEN || "").trim();
 
 function json(statusCode, payload, extraHeaders = {}) {
   return {
@@ -32,6 +37,102 @@ function isRateLimited(ip) {
   withinWindow.push(now);
   requestBuckets.set(ip, withinWindow);
   return withinWindow.length > RATE_MAX_REQUESTS;
+}
+
+function splitName(name) {
+  const normalized = name.replace(/\s+/g, " ").trim();
+  if (!normalized) {
+    return { firstName: "", lastName: "" };
+  }
+
+  const [firstName, ...rest] = normalized.split(" ");
+  return {
+    firstName,
+    lastName: rest.join(" "),
+  };
+}
+
+async function getHubSpotErrorMessage(response) {
+  const raw = await response.text();
+  if (!raw) {
+    return `${response.status} ${response.statusText}`.trim();
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed.message || parsed.error || raw;
+  } catch (error) {
+    return raw;
+  }
+}
+
+async function callHubSpot(path, method, body) {
+  if (!HUBSPOT_ACCESS_TOKEN) {
+    return { skipped: true };
+  }
+
+  const response = await fetch(`${HUBSPOT_API_BASE}${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  return {
+    skipped: false,
+    response,
+  };
+}
+
+async function syncLeadToHubSpot(lead) {
+  if (!HUBSPOT_ACCESS_TOKEN) {
+    return { skipped: true };
+  }
+
+  const { firstName, lastName } = splitName(lead.name);
+  const properties = {
+    email: lead.email,
+    firstname: firstName,
+  };
+
+  if (lastName) {
+    properties.lastname = lastName;
+  }
+
+  const patchResult = await callHubSpot(
+    `/crm/v3/objects/contacts/${encodeURIComponent(lead.email)}?idProperty=email`,
+    "PATCH",
+    { properties }
+  );
+
+  if (patchResult.skipped) {
+    return { skipped: true };
+  }
+
+  const patchResponse = patchResult.response;
+  if (patchResponse.ok) {
+    return { skipped: false, action: "updated" };
+  }
+
+  if (patchResponse.status !== 404) {
+    const errorMessage = await getHubSpotErrorMessage(patchResponse);
+    throw new Error(`HubSpot update failed (${patchResponse.status}): ${errorMessage}`);
+  }
+
+  const createResult = await callHubSpot("/crm/v3/objects/contacts", "POST", { properties });
+  if (createResult.skipped) {
+    return { skipped: true };
+  }
+
+  const createResponse = createResult.response;
+  if (createResponse.ok) {
+    return { skipped: false, action: "created" };
+  }
+
+  const createError = await getHubSpotErrorMessage(createResponse);
+  throw new Error(`HubSpot create failed (${createResponse.status}): ${createError}`);
 }
 
 exports.handler = async function handler(event) {
@@ -100,7 +201,21 @@ exports.handler = async function handler(event) {
 
   console.log("[promo-lead] %s", JSON.stringify(lead));
 
-  // TODO(crm-hubspot): send `lead` to HubSpot using HUBSPOT_API_KEY from env.
+  try {
+    const hubspotResult = await syncLeadToHubSpot(lead);
+    if (hubspotResult.skipped) {
+      console.warn(
+        "[promo-lead] HubSpot sync skipped because HUBSPOT_ACCESS_TOKEN is not configured."
+      );
+    } else {
+      console.log("[promo-lead] HubSpot contact %s.", hubspotResult.action);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("[promo-lead] HubSpot sync error: %s", message);
+    return json(502, { ok: false, error: "Unable to save your lead right now. Please try again." });
+  }
+
   // TODO(crm-mailchimp): send `lead` to Mailchimp audience using MAILCHIMP_API_KEY from env.
   // TODO(crm-airtable): persist `lead` to Airtable with AIRTABLE_API_KEY + AIRTABLE_BASE_ID.
 
