@@ -91,3 +91,23 @@ This project includes:
 ### Notes
 - `server.js` is for local testing only.
 - On Netlify, API requests are handled by the function in `netlify/functions/promo-lead.js`.
+
+## Deploy on Vercel (fallback/alternative)
+
+### Project compatibility
+- Static pages are served from root (`index.html`) and `/promo-email/`.
+- API endpoint on Vercel: `api/promo-lead.js` (same contract as Netlify).
+
+### Steps
+1. In Vercel, import this GitHub repository.
+2. Framework preset: `Other` (or leave auto-detected).
+3. Build command: leave empty.
+4. Output directory: leave empty.
+5. Add environment variable:
+   - `HUBSPOT_ACCESS_TOKEN=<your_private_app_token>`
+6. Deploy.
+
+### Production URL checks
+- `https://YOUR-VERCEL-DOMAIN/`
+- `https://YOUR-VERCEL-DOMAIN/promo-email/`
+- `https://YOUR-VERCEL-DOMAIN/api/promo-lead`
