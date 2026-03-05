@@ -1610,7 +1610,14 @@
             <div class="form-card" id="formulario">
               <h3 class="section-title">Get your quote in 2 minutes</h3>
               <p class="section-subtitle">We get back on WhatsApp with the price and time.</p>
-              <form name="orcamento" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <form
+                id="quoteForm"
+                name="orcamento"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                novalidate
+              >
                 <input type="hidden" name="form-name" value="orcamento" />
                 <p class="hidden" aria-hidden="true">
                   <label>Do not fill <input name="bot-field" /></label>
@@ -1654,8 +1661,10 @@
                   <label for="obs">Notes</label>
                   <textarea id="obs" name="obs" placeholder="e.g., lots of grease in the kitchen"></textarea>
                 </div>
-                <button class="btn btn-primary" type="submit">Send and receive a quote</button>
-                <p class="form-note">
+                <button class="btn btn-primary" id="quoteSubmitBtn" type="submit">
+                  Send and receive a quote
+                </button>
+                <p class="form-note" id="quoteFormNote">
                   Prefer an immediate response? <a href="https://wa.me/12403885323">Click "talk to us"</a>.
                 </p>
               </form>
@@ -1836,6 +1845,111 @@
           window.addEventListener("scroll", updateCta, { passive: true });
           window.addEventListener("resize", updateCta);
         }
+      }
+
+      const quoteForm = document.getElementById("quoteForm");
+      if (quoteForm) {
+        const quoteSubmitBtn = document.getElementById("quoteSubmitBtn");
+        const quoteFormNote = document.getElementById("quoteFormNote");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const defaultButtonLabel = quoteSubmitBtn ? quoteSubmitBtn.textContent : "Send and receive a quote";
+
+        const setQuoteNote = (message, isError) => {
+          if (!quoteFormNote) {
+            return;
+          }
+          quoteFormNote.textContent = message;
+          quoteFormNote.style.color = isError ? "#b91c1c" : "var(--muted)";
+        };
+
+        quoteForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(quoteForm);
+          const company = String(formData.get("bot-field") || "").trim();
+          const name = String(formData.get("nome") || "").trim();
+          const email = String(formData.get("email") || "").trim();
+          const phone = String(formData.get("whats") || "").trim();
+
+          if (company) {
+            return;
+          }
+
+          if (name.length < 2) {
+            setQuoteNote("Please enter your name.", true);
+            return;
+          }
+
+          if (!emailPattern.test(email)) {
+            setQuoteNote("Please enter a valid email address.", true);
+            return;
+          }
+
+          if (phone.length < 6) {
+            setQuoteNote("Please enter your phone or WhatsApp number.", true);
+            return;
+          }
+
+          if (quoteSubmitBtn) {
+            quoteSubmitBtn.disabled = true;
+            quoteSubmitBtn.textContent = "Sending...";
+          }
+          quoteForm.setAttribute("aria-busy", "true");
+          setQuoteNote("Sending your request...", false);
+
+          const payload = {
+            name,
+            email,
+            phone,
+            cleaningType: String(formData.get("tipo") || "").trim(),
+            size: String(formData.get("tamanho") || "").trim(),
+            location: String(formData.get("local") || "").trim(),
+            desiredDate: String(formData.get("data") || "").trim(),
+            notes: String(formData.get("obs") || "").trim(),
+            company,
+            source: "quote-form",
+            createdAt: new Date().toISOString(),
+            pagePath: window.location.pathname,
+            userAgent: navigator.userAgent,
+          };
+
+          try {
+            const response = await fetch("/api/promo-lead", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            let result = {};
+            try {
+              result = await response.json();
+            } catch (jsonError) {
+              result = {};
+            }
+
+            if (!response.ok || !result.ok) {
+              throw new Error(result.error || "Unable to send your request now. Please try again.");
+            }
+
+            quoteForm.reset();
+            setQuoteNote("Thanks! We received your request and will contact you soon.", false);
+          } catch (error) {
+            setQuoteNote(
+              error instanceof Error
+                ? error.message
+                : "Unable to send your request now. Please try again.",
+              true
+            );
+          } finally {
+            quoteForm.setAttribute("aria-busy", "false");
+            if (quoteSubmitBtn) {
+              quoteSubmitBtn.disabled = false;
+              quoteSubmitBtn.textContent = defaultButtonLabel;
+            }
+          }
+        });
       }
     </script>
   </body>

@@ -16,7 +16,7 @@
   - Email validation
   - Honeypot field (`company`) validation
   - Basic in-memory rate limiting
-  - Server-side logging placeholder for CRM integrations
+  - HubSpot sync + server-side email notification support
 
 ### Test the POST endpoint
 PowerShell example:
@@ -45,6 +45,18 @@ If HubSpot is configured but fails, the endpoint returns `502`.
 
 Required HubSpot token scope:
 - `crm.objects.contacts.write`
+
+### Lead email notifications (implemented)
+Both forms now send submissions through the API and always send a notification email to:
+- `bestwayservices7@gmail.com` (fixed destination)
+
+SMTP env vars to configure in Vercel/Netlify:
+- `SMTP_HOST` (example: `smtp.gmail.com`)
+- `SMTP_PORT` (example: `587`)
+- `SMTP_SECURE` (`true` for SSL/TLS port 465, `false` for STARTTLS 587)
+- `SMTP_USER` (your sender account)
+- `SMTP_PASS` (app password / SMTP password)
+- `SMTP_FROM` (from address shown in email, example: `Best Way <bestwayservices7@gmail.com>`)
 
 Where to set env var in Netlify:
 1. `Site configuration` -> `Environment variables`
@@ -105,6 +117,12 @@ This project includes:
 4. Output directory: leave empty.
 5. Add environment variable:
    - `HUBSPOT_ACCESS_TOKEN=<your_private_app_token>`
+   - `SMTP_HOST=<your_smtp_host>`
+   - `SMTP_PORT=<your_smtp_port>`
+   - `SMTP_SECURE=<true_or_false>`
+   - `SMTP_USER=<your_smtp_user>`
+   - `SMTP_PASS=<your_smtp_password>`
+   - `SMTP_FROM=<from_email_or_name_and_email>`
 6. Deploy.
 
 ### Production URL checks

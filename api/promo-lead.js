@@ -8,6 +8,13 @@ const HUBSPOT_API_BASE = (process.env.HUBSPOT_API_BASE || "https://api.hubapi.co
   ""
 );
 const HUBSPOT_ACCESS_TOKEN = (process.env.HUBSPOT_ACCESS_TOKEN || "").trim();
+const LEAD_NOTIFICATION_TO = "bestwayservices7@gmail.com";
+const SMTP_HOST = (process.env.SMTP_HOST || "").trim();
+const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+const SMTP_SECURE = String(process.env.SMTP_SECURE || "false").toLowerCase() === "true";
+const SMTP_USER = (process.env.SMTP_USER || "").trim();
+const SMTP_PASS = (process.env.SMTP_PASS || "").trim();
+const SMTP_FROM = (process.env.SMTP_FROM || SMTP_USER || "").trim();
 
 function getClientIp(req) {
   const forwarded = req.headers["x-forwarded-for"];
@@ -38,6 +45,94 @@ function splitName(name) {
     firstName,
     lastName: rest.join(" "),
   };
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function toLine(label, value) {
+  return `${label}: ${value && String(value).trim() ? String(value).trim() : "-"}`;
+}
+
+function getMissingSmtpEnvVars() {
+  const missing = [];
+
+  if (!SMTP_HOST) {
+    missing.push("SMTP_HOST");
+  }
+  if (!SMTP_USER) {
+    missing.push("SMTP_USER");
+  }
+  if (!SMTP_PASS) {
+    missing.push("SMTP_PASS");
+  }
+  if (!SMTP_FROM) {
+    missing.push("SMTP_FROM");
+  }
+
+  return missing;
+}
+
+async function sendLeadNotificationEmail(lead) {
+  const missingSmtpVars = getMissingSmtpEnvVars();
+  if (missingSmtpVars.length > 0) {
+    throw new Error(`Missing SMTP env vars: ${missingSmtpVars.join(", ")}`);
+  }
+
+  const { default: nodemailer } = await import("nodemailer");
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_SECURE,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  });
+
+  const subject = `[Best Way] New lead from ${lead.source}`;
+  const textLines = [
+    "New lead received:",
+    "",
+    toLine("Source", lead.source),
+    toLine("Name", lead.name),
+    toLine("Email", lead.email),
+    toLine("Phone", lead.phone),
+    toLine("Cleaning type", lead.cleaningType),
+    toLine("Approximate size", lead.size),
+    toLine("Location", lead.location),
+    toLine("Desired date", lead.desiredDate),
+    toLine("Notes", lead.notes),
+    toLine("Page path", lead.pagePath),
+    toLine("Created at", lead.createdAt),
+  ];
+
+  await transporter.sendMail({
+    from: SMTP_FROM,
+    to: LEAD_NOTIFICATION_TO,
+    subject,
+    text: textLines.join("\n"),
+    html: `
+      <h2>New lead received</h2>
+      <p><strong>Source:</strong> ${escapeHtml(lead.source)}</p>
+      <p><strong>Name:</strong> ${escapeHtml(lead.name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(lead.email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(lead.phone || "-")}</p>
+      <p><strong>Cleaning type:</strong> ${escapeHtml(lead.cleaningType || "-")}</p>
+      <p><strong>Approximate size:</strong> ${escapeHtml(lead.size || "-")}</p>
+      <p><strong>Location:</strong> ${escapeHtml(lead.location || "-")}</p>
+      <p><strong>Desired date:</strong> ${escapeHtml(lead.desiredDate || "-")}</p>
+      <p><strong>Notes:</strong> ${escapeHtml(lead.notes || "-")}</p>
+      <p><strong>Page path:</strong> ${escapeHtml(lead.pagePath)}</p>
+      <p><strong>Created at:</strong> ${escapeHtml(lead.createdAt)}</p>
+    `,
+  });
 }
 
 async function getHubSpotErrorMessage(response) {
@@ -87,6 +182,10 @@ async function syncLeadToHubSpot(lead) {
 
   if (lastName) {
     properties.lastname = lastName;
+  }
+
+  if (lead.phone) {
+    properties.phone = lead.phone;
   }
 
   const patchResult = await callHubSpot(
@@ -156,6 +255,12 @@ export default async function handler(req, res) {
 
   const name = typeof parsed.name === "string" ? parsed.name.trim() : "";
   const email = typeof parsed.email === "string" ? parsed.email.trim() : "";
+  const phone = typeof parsed.phone === "string" ? parsed.phone.trim() : "";
+  const cleaningType = typeof parsed.cleaningType === "string" ? parsed.cleaningType.trim() : "";
+  const size = typeof parsed.size === "string" ? parsed.size.trim() : "";
+  const location = typeof parsed.location === "string" ? parsed.location.trim() : "";
+  const desiredDate = typeof parsed.desiredDate === "string" ? parsed.desiredDate.trim() : "";
+  const notes = typeof parsed.notes === "string" ? parsed.notes.trim() : "";
   const source = typeof parsed.source === "string" ? parsed.source.trim() : "promo-email";
   const createdAtClient =
     typeof parsed.createdAt === "string" ? parsed.createdAt.trim() : new Date().toISOString();
@@ -184,6 +289,12 @@ export default async function handler(req, res) {
   const lead = {
     name,
     email: email.toLowerCase(),
+    phone,
+    cleaningType,
+    size,
+    location,
+    desiredDate,
+    notes,
     source: source || "promo-email",
     createdAt: new Date().toISOString(),
     createdAtClient,
@@ -193,6 +304,16 @@ export default async function handler(req, res) {
   };
 
   console.log("[promo-lead] %s", JSON.stringify(lead));
+
+  try {
+    await sendLeadNotificationEmail(lead);
+    console.log("[promo-lead] Notification email sent to %s.", LEAD_NOTIFICATION_TO);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("[promo-lead] Notification email error: %s", message);
+    send(res, 502, { ok: false, error: "Unable to send lead notification right now." });
+    return;
+  }
 
   try {
     const hubspotResult = await syncLeadToHubSpot(lead);

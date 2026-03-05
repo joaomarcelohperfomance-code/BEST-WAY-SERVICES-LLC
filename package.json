@@ -1,0 +1,9 @@
+{
+  "name": "best-way-services-llc",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page and lead capture endpoints for Best Way Services",
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  }
+}
