@@ -106,9 +106,9 @@ async function sendLeadNotificationEmail(lead) {
     toLine("Phone", lead.phone),
     toLine("Cleaning type", lead.cleaningType),
     toLine("Approximate size", lead.size),
-    toLine("Location", lead.location),
-    toLine("Desired date", lead.desiredDate),
-    toLine("Notes", lead.notes),
+    toLine("ZIP code", lead.zipCode),
+    toLine("Pets", lead.pets),
+    toLine("Kids", lead.kids),
     toLine("Page path", lead.pagePath),
     toLine("Created at", lead.createdAt),
   ];
@@ -126,9 +126,9 @@ async function sendLeadNotificationEmail(lead) {
       <p><strong>Phone:</strong> ${escapeHtml(lead.phone || "-")}</p>
       <p><strong>Cleaning type:</strong> ${escapeHtml(lead.cleaningType || "-")}</p>
       <p><strong>Approximate size:</strong> ${escapeHtml(lead.size || "-")}</p>
-      <p><strong>Location:</strong> ${escapeHtml(lead.location || "-")}</p>
-      <p><strong>Desired date:</strong> ${escapeHtml(lead.desiredDate || "-")}</p>
-      <p><strong>Notes:</strong> ${escapeHtml(lead.notes || "-")}</p>
+      <p><strong>ZIP code:</strong> ${escapeHtml(lead.zipCode || "-")}</p>
+      <p><strong>Pets:</strong> ${escapeHtml(lead.pets || "-")}</p>
+      <p><strong>Kids:</strong> ${escapeHtml(lead.kids || "-")}</p>
       <p><strong>Page path:</strong> ${escapeHtml(lead.pagePath)}</p>
       <p><strong>Created at:</strong> ${escapeHtml(lead.createdAt)}</p>
     `,
@@ -258,9 +258,9 @@ export default async function handler(req, res) {
   const phone = typeof parsed.phone === "string" ? parsed.phone.trim() : "";
   const cleaningType = typeof parsed.cleaningType === "string" ? parsed.cleaningType.trim() : "";
   const size = typeof parsed.size === "string" ? parsed.size.trim() : "";
-  const location = typeof parsed.location === "string" ? parsed.location.trim() : "";
-  const desiredDate = typeof parsed.desiredDate === "string" ? parsed.desiredDate.trim() : "";
-  const notes = typeof parsed.notes === "string" ? parsed.notes.trim() : "";
+  const zipCode = typeof parsed.zipCode === "string" ? parsed.zipCode.trim() : "";
+  const pets = typeof parsed.pets === "string" ? parsed.pets.trim() : "";
+  const kids = typeof parsed.kids === "string" ? parsed.kids.trim() : "";
   const source = typeof parsed.source === "string" ? parsed.source.trim() : "promo-email";
   const createdAtClient =
     typeof parsed.createdAt === "string" ? parsed.createdAt.trim() : new Date().toISOString();
@@ -292,9 +292,9 @@ export default async function handler(req, res) {
     phone,
     cleaningType,
     size,
-    location,
-    desiredDate,
-    notes,
+    zipCode,
+    pets,
+    kids,
     source: source || "promo-email",
     createdAt: new Date().toISOString(),
     createdAtClient,

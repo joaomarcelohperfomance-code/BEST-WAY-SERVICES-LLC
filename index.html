@@ -6,7 +6,7 @@
     <title>Best Way Services | Residential and commercial cleaning</title>
     <meta
       name="description"
-      content="Residential and commercial cleaning with an identified team, a checklist, and on-time delivery. Fast quotes via WhatsApp."
+      content="Residential and commercial cleaning with an identified team, a checklist, and on-time delivery. Fast quotes via SMS."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -103,9 +103,9 @@
       }
 
       header {
-        padding: 16px 0 8px;
+        padding: 8px 0 4px;
         position: relative;
-        z-index: 2;
+        z-index: 10;
       }
 
       .header-bar {
@@ -126,51 +126,129 @@
         letter-spacing: 0.5px;
       }
 
+      .header-bar .brand {
+        align-items: flex-start;
+        height: clamp(72px, 7vw, 90px);
+        overflow: hidden;
+      }
+
       .logo-img {
-        width: 219px;
-        height: 219px;
+        width: 180px;
+        height: auto;
         object-fit: contain;
         flex: 0 0 auto;
         filter: drop-shadow(0 10px 20px rgba(109, 40, 217, 0.25));
       }
 
       .header-bar .logo-img {
-        width: 280px;
-        height: 280px;
-        transform: scale(2.1);
-        transform-origin: center center;
+        width: clamp(150px, 16vw, 188px);
+        height: auto;
+        transform: translateY(-22%);
       }
 
       footer .logo-img {
-        width: 558px;
-        height: 558px;
+        width: 180px;
+        height: auto;
       }
 
       .site-nav {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
+        position: relative;
+        flex: 0 0 auto;
       }
 
-      .site-nav a {
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        border: 1px solid rgba(109, 40, 217, 0.24);
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--brand-dark);
+        box-shadow: 0 12px 26px rgba(31, 15, 46, 0.1);
+        cursor: pointer;
+        list-style: none;
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .menu-toggle::-webkit-details-marker {
+        display: none;
+      }
+
+      .menu-toggle::before,
+      .menu-toggle::after {
+        content: "";
+        grid-area: 1 / 1;
+        width: 21px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .menu-toggle::before {
+        transform: translateY(-4px);
+      }
+
+      .menu-toggle::after {
+        transform: translateY(4px);
+      }
+
+      .site-nav[open] .menu-toggle {
+        background: rgba(109, 40, 217, 0.12);
+        border-color: rgba(109, 40, 217, 0.36);
+      }
+
+      .site-nav[open] .menu-toggle::before {
+        box-shadow: 0 0 0 currentColor;
+        transform: rotate(45deg);
+      }
+
+      .site-nav[open] .menu-toggle::after {
+        transform: rotate(-45deg);
+      }
+
+      .menu-toggle:hover {
+        background: rgba(109, 40, 217, 0.1);
+        border-color: rgba(109, 40, 217, 0.34);
+        transform: translateY(-1px);
+      }
+
+      .menu-toggle:focus-visible {
+        outline: 3px solid rgba(109, 40, 217, 0.35);
+        outline-offset: 2px;
+      }
+
+      .nav-panel {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        display: grid;
+        gap: 8px;
+        min-width: 190px;
+        padding: 10px;
+        border: 1px solid rgba(109, 40, 217, 0.18);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-panel a {
         font-weight: 600;
         color: var(--brand-dark);
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(109, 40, 217, 0.2);
+        padding: 10px 12px;
+        border-radius: 10px;
         transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         white-space: nowrap;
       }
 
-      .site-nav a:hover {
+      .nav-panel a:hover {
         background: rgba(109, 40, 217, 0.12);
-        border-color: rgba(109, 40, 217, 0.3);
         transform: translateY(-1px);
       }
 
-      .site-nav a:focus-visible {
+      .nav-panel a:focus-visible {
         outline: 3px solid rgba(109, 40, 217, 0.35);
         outline-offset: 2px;
       }
@@ -220,7 +298,7 @@
       }
 
       .section-hero {
-        padding: clamp(40px, 6vw, 88px) 0 clamp(60px, 8vw, 110px);
+        padding: clamp(22px, 4vw, 54px) 0 clamp(60px, 8vw, 110px);
         overflow: hidden;
       }
 
@@ -274,6 +352,30 @@
       .hero-media {
         display: grid;
         gap: 18px;
+      }
+
+      .hero-form-card {
+        align-self: start;
+      }
+
+      .hero-form-card.form-card {
+        padding: 24px;
+      }
+
+      .hero-form-card label {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+      }
+
+      .hero-form-card input,
+      .hero-form-card select,
+      .hero-form-card textarea {
+        padding: 9px 12px;
+        font-size: 0.95rem;
+      }
+
+      .hero-form-card textarea {
+        min-height: 58px;
       }
 
       .hero-photo {
@@ -952,6 +1054,16 @@
         border: 1px solid var(--line);
       }
 
+      .form-card .section-title {
+        font-size: clamp(1.55rem, 1.5vw + 1rem, 2.25rem);
+        margin-bottom: 8px;
+      }
+
+      .form-card .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 18px;
+      }
+
       form {
         display: grid;
         gap: 14px;
@@ -991,7 +1103,7 @@
       }
 
       textarea {
-        min-height: 110px;
+        min-height: 86px;
         resize: vertical;
       }
 
@@ -1070,7 +1182,7 @@
       }
 
       footer {
-        padding: 40px 0 120px;
+        padding: 34px 0 120px;
         color: #334155;
         background: #f9f5ff;
         border-top: 1px solid rgba(109, 40, 217, 0.2);
@@ -1078,13 +1190,30 @@
 
       .footer-grid {
         display: grid;
-        gap: 20px;
+        gap: 24px;
         align-items: start;
+      }
+
+      .footer-brand {
+        display: grid;
+        gap: 12px;
+      }
+
+      .footer-brand .brand {
+        align-items: flex-start;
+        height: 100px;
+        overflow: hidden;
+      }
+
+      .footer-brand .logo-img {
+        width: 210px;
+        transform: translateY(-22%);
       }
 
       .footer-note {
         font-size: 0.9rem;
         color: #6b5c7a;
+        margin: 10px 0 0;
       }
 
       .mobile-cta {
@@ -1144,7 +1273,19 @@
 
       @media (min-width: 900px) {
         .hero-grid {
-          grid-template-columns: 1.1fr 0.9fr;
+          grid-template-columns: minmax(0, 0.9fr) minmax(430px, 1.1fr);
+        }
+
+        .hero-form-card form {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px 12px;
+        }
+
+        .hero-form-card .hidden,
+        .hero-form-card .field-full,
+        .hero-form-card .btn,
+        .hero-form-card .form-note {
+          grid-column: 1 / -1;
         }
 
         .cta-row {
@@ -1165,28 +1306,7 @@
         }
 
         .footer-grid {
-          grid-template-columns: 1fr 1fr 1.2fr;
-        }
-
-        .footer-grid > div:nth-child(1) {
-          grid-column: 3;
-          grid-row: 1;
-          text-align: right;
-          justify-self: end;
-        }
-
-        .footer-grid > div:nth-child(1) .brand {
-          justify-content: flex-end;
-        }
-
-        .footer-grid > div:nth-child(2) {
-          grid-column: 1;
-          grid-row: 1;
-        }
-
-        .footer-grid > div:nth-child(3) {
-          grid-column: 2;
-          grid-row: 1;
+          grid-template-columns: minmax(260px, 1.2fr) 0.8fr 1fr;
         }
 
         .mobile-cta {
@@ -1207,29 +1327,64 @@
           padding-bottom: 110px;
         }
         header {
-          padding: 12px 0 6px;
+          padding: 8px 0 4px;
         }
         .section-hero .hero-bg {
           opacity: 0.1;
           background-position: center top;
         }
         .header-bar {
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
+        }
+
+        .hero-grid {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .hero-form-card {
+          order: -1;
+        }
+
+        .hero-form-card.form-card {
+          padding: 22px;
+        }
+
+        .hero-form-card .section-title {
+          font-size: 1.55rem;
+        }
+
+        .hero-form-card .section-subtitle {
+          font-size: 0.98rem;
+          margin-bottom: 14px;
+        }
+
+        .hero-form-card form {
+          gap: 11px;
+        }
+
+        .hero-form-card input,
+        .hero-form-card select,
+        .hero-form-card textarea {
+          padding: 10px 12px;
+        }
+
+        .hero-form-card textarea {
+          min-height: 76px;
         }
 
         .brand {
-          width: 100%;
-          justify-content: center;
+          min-width: 0;
         }
 
-        .site-nav {
-          width: 100%;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          padding-bottom: 8px;
-          justify-content: center;
+        .header-bar .brand {
+          height: clamp(70px, 19vw, 78px);
+        }
+
+        .nav-panel {
+          right: 0;
         }
 
         .card h4::before {
@@ -1238,15 +1393,29 @@
         }
 
         .logo-img {
-          width: 219px;
-          height: 219px;
+          width: 142px;
+          height: auto;
         }
 
         .header-bar .logo-img {
-          width: 220px;
-          height: 220px;
-          transform: scale(2.1);
-          transform-origin: center center;
+          width: clamp(136px, 40vw, 158px);
+          height: auto;
+        }
+
+        footer {
+          padding-top: 28px;
+        }
+
+        .footer-grid {
+          gap: 18px;
+        }
+
+        .footer-brand .brand {
+          height: 78px;
+        }
+
+        .footer-brand .logo-img {
+          width: 160px;
         }
       }
 
@@ -1270,11 +1439,14 @@
         <div class="brand">
           <img class="logo-img" src="assets/logo.png" alt="" />
         </div>
-        <nav class="site-nav" aria-label="Main sections">
-          <a href="#inicio">Home</a>
-          <a href="#servicos">Services</a>
-          <a href="#como-funciona">How it works</a>
-        </nav>
+        <details class="site-nav">
+          <summary class="menu-toggle" aria-label="Open navigation menu"></summary>
+          <nav class="nav-panel" aria-label="Main sections">
+            <a href="#inicio">Home</a>
+            <a href="#servicos">Services</a>
+            <a href="#como-funciona">How it works</a>
+          </nav>
+        </details>
       </div>
     </header>
 
@@ -1290,31 +1462,79 @@
             </h1>
             <p>
               You reach out, the team arrives on time and delivers everything clean in one visit.
-              Fast quotes via WhatsApp or the form.
+              Fast quotes via SMS or the form.
             </p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="https://wa.me/12403885323">
-                Get a quote on WhatsApp
+              <a class="btn btn-primary" href="sms:+12403885323?&body=Hi%20Best%20Way%20Services%2C%20I%20would%20like%20a%20cleaning%20quote.">
+                Get a quote by SMS
               </a>
-              <a class="btn btn-secondary" href="#formulario">
-                Request a quote via the form
+              <a class="btn btn-secondary" href="#servicos">
+                See services
               </a>
             </div>
             <p class="form-note">Reply within 5 minutes during business hours.</p>
           </div>
-          <div class="hero-media">
-            <figure class="hero-photo">
-              <img src="assets/hero-cleaning.jpg" alt="" loading="eager" decoding="async" />
-            </figure>
-            <div class="hero-card">
-              <h3>Fast and safe service</h3>
-              <ul class="hero-list">
-                <li>Identified and trained team</li>
-                <li>Visible checklist from start to finish</li>
-                <li>Right products for each surface and environment</li>
-                <li>Final review before delivery</li>
-              </ul>
-            </div>
+          <div class="form-card hero-form-card" id="formulario">
+            <h3 class="section-title">Get your quote in 2 minutes</h3>
+            <p class="section-subtitle">Send the details and we get back by SMS with price and time.</p>
+            <form
+              id="quoteForm"
+              name="orcamento"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              novalidate
+            >
+              <input type="hidden" name="form-name" value="orcamento" />
+              <p class="hidden" aria-hidden="true">
+                <label>Do not fill <input name="bot-field" /></label>
+              </p>
+              <div>
+                <label for="nome">Name</label>
+                <input id="nome" name="nome" type="text" required />
+              </div>
+              <div>
+                <label for="whats">SMS or phone number</label>
+                <input id="whats" name="whats" type="tel" placeholder="(000) 0000-000" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@email.com" required />
+              </div>
+              <div>
+                <label for="tipo">Type of cleaning</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="">Select</option>
+                  <option>Residential</option>
+                  <option>Commercial</option>
+                  <option>Post-construction</option>
+                  <option>Deep cleaning</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="tamanho">Approximate size</label>
+                <input id="tamanho" name="tamanho" type="text" placeholder="e.g., 80 m2 or 3 rooms" />
+              </div>
+              <div>
+                <label for="zipCode">ZIP code</label>
+                <input id="zipCode" name="zipCode" type="text" inputmode="numeric" placeholder="e.g., 20850" />
+              </div>
+              <div>
+                <label for="pets">Pets</label>
+                <input id="pets" name="pets" type="text" placeholder="No or yes, 2 dogs" />
+              </div>
+              <div>
+                <label for="kids">Kids</label>
+                <input id="kids" name="kids" type="text" placeholder="No or yes, 2 kids" />
+              </div>
+              <button class="btn btn-primary" id="quoteSubmitBtn" type="submit">
+                Send and receive a quote
+              </button>
+              <p class="form-note" id="quoteFormNote">
+                Prefer an immediate response? <a href="sms:+12403885323?&body=Hi%20Best%20Way%20Services%2C%20I%20would%20like%20a%20cleaning%20quote.">Open SMS</a>.
+              </p>
+            </form>
           </div>
         </div>
       </section>
@@ -1492,7 +1712,7 @@
           <div class="grid three steps">
             <div class="card step-item">
               <h4>You contact us</h4>
-              <p>Send photos and details via WhatsApp or the form.</p>
+              <p>Send photos and details via SMS or the form.</p>
             </div>
             <div class="card step-item">
               <h4>Get the quote</h4>
@@ -1582,97 +1802,6 @@
         </div>
       </section>
 
-      <section class="section-offer section-soft reveal has-divider" id="orcamento">
-        <div class="container">
-          <div class="grid two">
-            <div>
-              <h2 class="section-title">Fast quote, no commitment</h2>
-              <p class="section-subtitle">
-                Open schedule this week. Limited time slots.
-              </p>
-              <div class="grid">
-                <div class="card">
-                  <h4>Quick response</h4>
-                  <p>Get the price and time in a few minutes.</p>
-                </div>
-                <div class="card">
-                  <h4>Easy payment</h4>
-                  <p>Zelle, card, or transfer.</p>
-                </div>
-              </div>
-              <div class="cta-row" style="margin-top: 20px;">
-                <a class="btn btn-primary" href="https://wa.me/12403885323">
-                  Talk to us now
-                </a>
-                <a class="btn btn-secondary" href="#formulario">Request via the form</a>
-              </div>
-            </div>
-            <div class="form-card" id="formulario">
-              <h3 class="section-title">Get your quote in 2 minutes</h3>
-              <p class="section-subtitle">We get back on WhatsApp with the price and time.</p>
-              <form
-                id="quoteForm"
-                name="orcamento"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                novalidate
-              >
-                <input type="hidden" name="form-name" value="orcamento" />
-                <p class="hidden" aria-hidden="true">
-                  <label>Do not fill <input name="bot-field" /></label>
-                </p>
-                <div>
-                  <label for="nome">Name</label>
-                  <input id="nome" name="nome" type="text" required />
-                </div>
-                <div>
-                  <label for="whats">WhatsApp or phone number (if you don't have WhatsApp)</label>
-                  <input id="whats" name="whats" type="tel" placeholder="(000) 0000-000" required />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" placeholder="you@email.com" required />
-                </div>
-                <div>
-                  <label for="tipo">Type of cleaning</label>
-                  <select id="tipo" name="tipo" required>
-                    <option value="">Select</option>
-                    <option>Residential</option>
-                    <option>Commercial</option>
-                    <option>Post-construction</option>
-                    <option>Deep cleaning</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="tamanho">Approximate size</label>
-                  <input id="tamanho" name="tamanho" type="text" placeholder="e.g., 80 m2 or 3 rooms" />
-                </div>
-                <div>
-                  <label for="local">Neighborhood and city</label>
-                  <input id="local" name="local" type="text" />
-                </div>
-                <div>
-                  <label for="data">Desired date</label>
-                  <input id="data" name="data" type="text" placeholder="e.g., Today or [Specify date]" />
-                </div>
-                <div>
-                  <label for="obs">Notes</label>
-                  <textarea id="obs" name="obs" placeholder="e.g., lots of grease in the kitchen"></textarea>
-                </div>
-                <button class="btn btn-primary" id="quoteSubmitBtn" type="submit">
-                  Send and receive a quote
-                </button>
-                <p class="form-note" id="quoteFormNote">
-                  Prefer an immediate response? <a href="https://wa.me/12403885323">Click "talk to us"</a>.
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="section-cta section-contrast reveal has-divider" id="cta">
         <div class="container">
           <div class="cta-block">
@@ -1680,7 +1809,7 @@
             <p class="section-subtitle">
               Click and get a clear, fast quote. No commitment.
             </p>
-            <a class="btn btn-primary" href="https://wa.me/12403885323">
+            <a class="btn btn-primary" href="sms:+12403885323?&body=Hi%20Best%20Way%20Services%2C%20I%20would%20like%20a%20cleaning%20quote.">
               Get a quote now
             </a>
           </div>
@@ -1715,10 +1844,9 @@
 
     <footer>
       <div class="container footer-grid">
-        <div>
+        <div class="footer-brand">
           <div class="brand">
             <img class="logo-img" src="assets/logo.png" alt="" />
-            
           </div>
           <p class="footer-note">
            Best Way Services LLC is a professional cleaning company serving homes and businesses in the DMV area. Founded by a dedicated family, we combine reliability, efficiency, and attention to detail in all of our services. Our team provides high-quality cleaning with care, consistency, and professionalism. We don't just clean; we create healthy, organized, and welcoming spaces you can trust.
@@ -1726,7 +1854,7 @@
         </div>
         <div>
           <strong>Contact</strong>
-          <p class="footer-note">WhatsApp: +1 (240) 388-5323</p>
+          <p class="footer-note">SMS: +1 (240) 388-5323</p>
           <p class="footer-note">Phone: +1 (240) 388-5323</p>
           <p class="footer-note"></p>
         </div>
@@ -1740,10 +1868,19 @@
     </footer>
 
     <div class="mobile-cta" aria-label="Quick contact shortcut">
-      <a class="btn btn-primary" href="https://wa.me/12403885323">Talk to us now</a>
+      <a class="btn btn-primary" href="sms:+12403885323?&body=Hi%20Best%20Way%20Services%2C%20I%20would%20like%20a%20cleaning%20quote.">Text us now</a>
       <a class="btn btn-secondary" href="#formulario">Form</a>
     </div>
     <script>
+      const siteNav = document.querySelector(".site-nav");
+      if (siteNav) {
+        siteNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            siteNav.removeAttribute("open");
+          });
+        });
+      }
+
       const comparison = document.querySelector(".comparison");
       const range = document.querySelector(".comparison-range");
       if (comparison && range) {
@@ -1886,7 +2023,7 @@
           }
 
           if (phone.length < 6) {
-            setQuoteNote("Please enter your phone or WhatsApp number.", true);
+            setQuoteNote("Please enter your SMS or phone number.", true);
             return;
           }
 
@@ -1903,9 +2040,9 @@
             phone,
             cleaningType: String(formData.get("tipo") || "").trim(),
             size: String(formData.get("tamanho") || "").trim(),
-            location: String(formData.get("local") || "").trim(),
-            desiredDate: String(formData.get("data") || "").trim(),
-            notes: String(formData.get("obs") || "").trim(),
+            zipCode: String(formData.get("zipCode") || "").trim(),
+            pets: String(formData.get("pets") || "").trim(),
+            kids: String(formData.get("kids") || "").trim(),
             company,
             source: "quote-form",
             createdAt: new Date().toISOString(),

@@ -246,6 +246,12 @@ async function handlePromoLead(req, res) {
 
   const name = typeof parsed.name === "string" ? parsed.name.trim() : "";
   const email = typeof parsed.email === "string" ? parsed.email.trim() : "";
+  const phone = typeof parsed.phone === "string" ? parsed.phone.trim() : "";
+  const cleaningType = typeof parsed.cleaningType === "string" ? parsed.cleaningType.trim() : "";
+  const size = typeof parsed.size === "string" ? parsed.size.trim() : "";
+  const zipCode = typeof parsed.zipCode === "string" ? parsed.zipCode.trim() : "";
+  const pets = typeof parsed.pets === "string" ? parsed.pets.trim() : "";
+  const kids = typeof parsed.kids === "string" ? parsed.kids.trim() : "";
   const source = typeof parsed.source === "string" ? parsed.source.trim() : "promo-email";
   const createdAtClient =
     typeof parsed.createdAt === "string" ? parsed.createdAt.trim() : new Date().toISOString();
@@ -274,6 +280,12 @@ async function handlePromoLead(req, res) {
   const lead = {
     name,
     email: email.toLowerCase(),
+    phone,
+    cleaningType,
+    size,
+    zipCode,
+    pets,
+    kids,
     source: source || "promo-email",
     createdAt: new Date().toISOString(),
     createdAtClient,
